@@ -1,0 +1,43 @@
+$(document).ready(function(){
+var colorArray=["Blue","Green"];
+var j=0;
+var redHexCode="#ff4d4d";
+var greenHexCode="#4dff4d";
+var blueHexCode="#8080ff";
+var yellowHexCode="#ffff80";
+function colorSequence()
+{
+  
+  if(colorArray[j]==="Red")
+    {
+      $("#"+colorArray[j]+"Button").effect("highlight",{color:redHexCode},900);   
+    }
+  else if(colorArray[j]==="Green")
+    {
+  
+      $("#"+colorArray[j]+"Button").effect("highlight",{color:greenHexCode},900);
+    }
+  else if(colorArray[j]==="Yellow")
+      {
+  
+        $("#"+colorArray[j]+"Button").effect("highlight",{color:yellowHexCode},900);
+      }
+  else if(colorArray[j]==="Blue")
+    {
+  
+      $("#"+colorArray[j]+"Button").effect("highlight",{color:blueHexCode},900);
+    }     
+    j++;
+}
+
+ $("#startButton").on("click",function(){ 
+var action; //triggers the sequence playback
+   $("#countDisplay").html("Count:0");
+   action = setInterval(colorSequence,1000);
+   var testTime=setTimeout(function(){ // a dummy test to see how and at what time the user attempt to input the sequence
+     $("#countDisplay").html("Success"); 
+   },colorArray.length*1000+200);
+   
+   j=0;
+ });
+});
