@@ -1,43 +1,163 @@
 $(document).ready(function(){
-var colorArray=["Blue","Green"];
+var colorArray=[];
 var j=0;
+var colorArrayCounter=0;
 var redHexCode="#ff4d4d";
 var greenHexCode="#4dff4d";
 var blueHexCode="#8080ff";
 var yellowHexCode="#ffff80";
 function colorSequence()
 {
-  
+
   if(colorArray[j]==="Red")
     {
-      $("#"+colorArray[j]+"Button").effect("highlight",{color:redHexCode},900);   
+      $("#"+colorArray[j]+"Button").effect("highlight",{color:redHexCode},1200);
     }
   else if(colorArray[j]==="Green")
     {
-  
-      $("#"+colorArray[j]+"Button").effect("highlight",{color:greenHexCode},900);
+
+      $("#"+colorArray[j]+"Button").effect("highlight",{color:greenHexCode},1200);
     }
   else if(colorArray[j]==="Yellow")
       {
-  
-        $("#"+colorArray[j]+"Button").effect("highlight",{color:yellowHexCode},900);
+
+        $("#"+colorArray[j]+"Button").effect("highlight",{color:yellowHexCode},1200);
       }
   else if(colorArray[j]==="Blue")
     {
-  
-      $("#"+colorArray[j]+"Button").effect("highlight",{color:blueHexCode},900);
-    }     
+
+      $("#"+colorArray[j]+"Button").effect("highlight",{color:blueHexCode},1200);
+    }
     j++;
 }
 
- $("#startButton").on("click",function(){ 
-var action; //triggers the sequence playback
-   $("#countDisplay").html("Count:0");
-   action = setInterval(colorSequence,1000);
-   var testTime=setTimeout(function(){ // a dummy test to see how and at what time the user attempt to input the sequence
-     $("#countDisplay").html("Success"); 
-   },colorArray.length*1000+200);
-   
-   j=0;
- });
+function addRandomColor() //add another color to the sequence
+{
+  var randomNumber=Math.random();
+  if(randomNumber>=0&&randomNumber<0.25)
+  {
+    colorArray.push("Red");
+  }
+  else if(randomNumber>=0.25&&randomNumber<0.5)
+  {
+    colorArray.push("Green");
+  }
+  else if(randomNumber>=0.5&&randomNumber<0.75)
+  {
+    colorArray.push("Yellow");
+  }
+  else if(randomNumber>=0.75&&randomNumber<1)
+  {
+    colorArray.push("Blue");
+  }
+}
+
+function playColorSequence()  //ges the color sequence to play
+{
+  j=0;
+  var action;
+  action=setInterval(colorSequence,2400);
+}
+
+$("#RedButton").on("click",function(){ //on click of red button
+  if(colorArray[colorArrayCounter]!=="Red") //clicked red, but it's wrong
+  {
+    $("#displayBoxText").html("Incorrect sequence");
+  }
+  else if(colorArray[colorArrayCounter]==="Red") //clicked and correct
+  {
+    colorArrayCounter++;
+  }
+
+  if((colorArrayCounter === colorArray.length-1) && (colorArrayCounter < 2)) //change back to 19 
+  {
+    colorArrayCounter=0;
+    addRandomColor();
+  }
+  else if(colorArrayCounter === 3) //if you get 20 colors correct you win **Change back to 19
+  {
+    $("#displayBoxText").html("You win !!!");
+  }
+
 });
+
+$("#GreenButton").on("click",function(){ //on click of GREEN button
+  if(colorArray[colorArrayCounter]!=="Green") //clicked red, but it's wrong
+  {
+    $("#displayBoxText").html("Incorrect sequence");
+  }
+  else if(colorArray[colorArrayCounter]==="Green") //clicked and correct
+  {
+    colorArrayCounter++;
+  }
+
+  if((colorArrayCounter === colorArray.length-1) && (colorArrayCounter < 2)) //change back to 19 
+  {
+    colorArrayCounter=0;
+    addRandomColor();
+  }
+  else if(colorArrayCounter === 3) //if you get 20 colors correct you win **Change back to 19
+  {
+    $("#displayBoxText").html("You win !!!");
+  }
+
+});
+
+$("#YellowButton").on("click",function(){ //on click of YELLOW button
+  if(colorArray[colorArrayCounter]!=="Yellow") //clicked red, but it's wrong
+  {
+    $("#displayBoxText").html("Incorrect sequence");
+  }
+  else if(colorArray[colorArrayCounter]==="Yellow") //clicked and correct
+  {
+    colorArrayCounter++;
+  }
+
+  if((colorArrayCounter === colorArray.length-1) && (colorArrayCounter < 2)) //change back to 19 
+  {
+    colorArrayCounter=0;
+    addRandomColor();
+  }
+  else if(colorArrayCounter === 3) //if you get 20 colors correct you win **Change back to 19
+  {
+    $("#displayBoxText").html("You win !!!");
+  }
+
+});
+
+$("#BlueButton").on("click",function(){ //on click of YELLOW button
+  if(colorArray[colorArrayCounter]!=="Blue") //clicked red, but it's wrong
+  {
+    $("#displayBoxText").html("Incorrect sequence");
+  }
+  else if(colorArray[colorArrayCounter] === "Blue") //clicked and correct
+  {
+    colorArrayCounter++;
+  }
+
+  if((colorArrayCounter === colorArray.length-1) && (colorArrayCounter < 2)) //change back to 19 
+  {
+    colorArrayCounter=0;
+    addRandomColor(); //increments colorArrayCounter so off by one
+  }
+  else if(colorArrayCounter === 3) //if you get 20 colors correct you win **Change back to 19
+  {
+    $("#displayBoxText").html("You win !!!");
+  }
+
+});
+
+
+ $("#startButton").on("click",function(){
+//var action; triggers the sequence playback
+addRandomColor(); // call addRandomColor for initial
+   $("#countDisplay").html("Count:0");
+   playColorSequence();
+/*   action = setInterval(colorSequence,1000);
+   var testTime=setTimeout(function(){ // a dummy test to see how and at what time the user attempt to input the sequence
+     $("#countDisplay").html("Success");
+   },colorArray.length*1000+200);
+*/
+  // j=0;
+ });
+}); //end document
