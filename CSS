@@ -1,0 +1,73 @@
+#bodyOfButtons
+{
+  height:800px;
+  width:800px;  
+  background-color:#ffccff;
+
+}
+#RedButton
+{ 
+  background-color:red; 
+  
+}
+#GreenButton
+{
+  background-color:green;
+  
+}
+.buttonGroup
+{
+  border-color:black;
+  height:200px;
+  width:200px;
+  border-radius:50%;
+  margin-right:100px;
+  margin-left:100px;
+  margin-top:25px;
+  margin-bottom:25px;
+}
+#YellowButton
+{
+  background-color:yellow;
+}
+#BlueButton
+{
+  background-color:blue;
+}
+#countDisplay
+{
+  color:red;
+  background-color:orange;
+}
+#strictButton
+{
+  background-color:yellow;
+}
+#startButton
+{
+  background-color:green; 
+}
+#onButton
+{
+  background-color:gray;
+  
+}
+#offButton
+{
+  background-color:gray;
+}
+#name
+{
+  float:right;
+  font-family:'Alegreya SC';
+}
+#displayBox
+{
+  
+  margin-right:200px;
+  margin-left:200px;
+  margin-top:25px;
+  width:400px;
+  height:100px;
+  background-color:orange;
+}
